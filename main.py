@@ -24,6 +24,10 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
+        # updates to the board before rendering
+        space_ship.update(dt)
+
+        # render the board
         screen.fill(color=0)
         space_ship.draw(screen)
         pygame.display.flip()
