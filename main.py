@@ -4,6 +4,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import *
 
 def main():
 
@@ -14,6 +15,9 @@ def main():
     time_clock = pygame.time.Clock()
     dt = 0
 
+    # making the player
+    space_ship = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 7)
+
     while True:
 
         for event in pygame.event.get():
@@ -21,6 +25,7 @@ def main():
                 return
 
         screen.fill(color=0)
+        space_ship.draw(screen)
         pygame.display.flip()
 
         dt = time_clock.tick(60) / 1000

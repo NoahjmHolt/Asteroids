@@ -8,7 +8,7 @@ class Player(CircleShape):
     def __init__(self, x, y, radius):
 
         super().__init__(x, y, PLAYER_RADIUS)
-        rotation = 0
+        self.rotation = 0
 
     # from boot.dev, the triangle to fight the circles
     # in the player class
@@ -19,3 +19,6 @@ class Player(CircleShape):
         b = self.position - forward * self.radius - right
         c = self.position - forward * self.radius + right
         return [a, b, c]
+
+    def draw(self, screen):
+        pygame.draw.polygon(screen, pygame.Color("white"), self.triangle(), width=2)
