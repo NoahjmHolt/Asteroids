@@ -21,6 +21,7 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     space_rocks = pygame.sprite.Group()
+    bullets = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (space_rocks, updatable, drawable)
@@ -39,6 +40,11 @@ def main():
 
         dt = time_clock.tick(60) / 1000
         updatable.update(dt)
+
+        for rock in space_rocks:
+            if rock.collision(space_ship):
+                print("Game over!")
+                return
 
         screen.fill(0)
         for ship in drawable:
