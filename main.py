@@ -31,8 +31,7 @@ def main():
                 return
 
         dt = time_clock.tick(60) / 1000
-        for ship in updatable:
-            ship.update(dt)
+        updatable.update(dt)
 
         screen.fill(0)
         for ship in drawable:
