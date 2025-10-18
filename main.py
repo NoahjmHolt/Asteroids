@@ -46,6 +46,11 @@ def main():
             if rock.collision(space_ship):
                 print("Game over!")
                 return
+            for bullet in bullets:
+                if rock.collision(bullet):
+                    bullet.kill()
+                    rock.kill()
+
 
         screen.fill(0)
         for ship in drawable:

@@ -53,6 +53,7 @@ class Player(CircleShape):
 
     def shoot(self):
         # boot.dev help
+        self.shot_clock = PLAYER_SHOOT_COOLDOWN
         bullet = Shot(self.position.x, self.position.y)
 
         dir_vector = pygame.Vector2(0, 1).rotate(self.rotation)  # or (0, 1).rotate(self.rotation + 180)
