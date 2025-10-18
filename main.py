@@ -18,21 +18,20 @@ def main():
     # making the player
     space_ship = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 7)
 
+    # python
     while True:
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
-        # updates to the board before rendering
+        dt = time_clock.tick(60) / 1000
         space_ship.update(dt)
 
-        # render the board
-        screen.fill(color=0)
+        screen.fill(0)
         space_ship.draw(screen)
         pygame.display.flip()
 
-        dt = time_clock.tick(60) / 1000
+
 
 
 if __name__ == "__main__":
