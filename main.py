@@ -6,6 +6,7 @@ import pygame
 from constants import *
 from player import *
 from asteroid import *
+from asteroidfield import *
 
 def main():
 
@@ -23,6 +24,9 @@ def main():
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (space_rocks, updatable, drawable)
+    AsteroidField.containers = updatable
+
+    rock_garden = AsteroidField()
 
     # making the player
     space_ship = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 7)
