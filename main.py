@@ -49,7 +49,7 @@ def main():
             for bullet in bullets:
                 if rock.collision(bullet):
                     bullet.kill()
-                    rock.kill()
+                    rock.split()
 
 
         screen.fill(0)
