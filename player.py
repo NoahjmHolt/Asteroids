@@ -10,6 +10,7 @@ class Player(CircleShape):
 
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
+        self.shot_clock = 0
 
     # from boot.dev, the triangle to fight the circles
     # in the player class
@@ -31,6 +32,7 @@ class Player(CircleShape):
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
+        self.shot_clock -= dt
 
         if keys[pygame.K_a]:
            self.rotate(-dt)
@@ -41,7 +43,8 @@ class Player(CircleShape):
         if keys[pygame.K_w]:
             self.move(dt)
         if keys[pygame.K_SPACE]:
-            self.shoot()
+            if not self.shot_clock > 0:
+                self.shoot()
 
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -49,10 +52,10 @@ class Player(CircleShape):
 
 
     def shoot(self):
+        # boot.dev help
         bullet = Shot(self.position.x, self.position.y)
 
-        dir_vector = pygame.Vector2(0, 1)
-        dir_vector.rotate(self.rotation)
+        dir_vector = pygame.Vector2(0, 1).rotate(self.rotation)  # or (0, 1).rotate(self.rotation + 180)
         dir_vector *= PLAYER_SHOOT_SPEED
 
         bullet.velocity = dir_vector
